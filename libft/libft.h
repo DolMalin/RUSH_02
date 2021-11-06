@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2021/06/15 14:14:22 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/11/06 16:20:14 by pdal-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,5 @@ char				**ft_strsdup(char **s1);
 void				ft_strs_add_to_gc(char **strs, t_list **gc);
 void				ft_lst_remove_if(t_list **lst, t_list *remove);
 char				**ft_strsjoin_begin(char **strs, char *str);
+int   				ft_error(t_list *gc);
 #endif

@@ -15,6 +15,7 @@ FILES			= 	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii
 					ft_convert_base.c ft_putnbr_base.c ft_maths.c ft_maths_2.c ft_atoi_base.c ft_check_base.c \
 					ft_swap.c ft_strrev.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_size_nb.c \
 					get_next_line.c get_next_line_utils.c ft_strcpy.c ft_strs.c ft_lst_remove_if.c ft_strsjoin_before.c \
+					ft_malloc_gc.c ft_error.c\
 					$(addprefix ft_printf/, ${FILES_PRINTF})
 
 

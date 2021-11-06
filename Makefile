@@ -6,15 +6,18 @@
 #    By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/11/06 14:42:27 by pdal-mol         ###   ########.fr        #
+#    Updated: 2021/11/06 16:12:56 by pdal-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= rush_02
 
-INPUT_PARSING = 
+FILES_GENERAL = main.c
 
-FILES			= main.c
+INPUT_PARSING = init_params.c
+
+FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\
+					main.c
 
 INC_FILES		= rush_02.h
 INC_PATH		= ./includes/

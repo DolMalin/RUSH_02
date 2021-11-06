@@ -25,4 +25,6 @@ typedef struct	s_player
 	int	time;
 }				t_player;
 
+/* ==================== PROTOTYPES ==================== */
+void	init_params(t_board *board_config, t_player *player_config);
 #endif
