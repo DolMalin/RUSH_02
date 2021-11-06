@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include "rush_02.h"
+
 int main() {
-	printf("Hello world\n");
+	char	*data;
+
+	get_next_line(0, &data);
+	printf("%s", data);
 }
