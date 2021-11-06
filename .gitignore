@@ -2,3 +2,7 @@
 **/.DS_Store
 .idea
 .vscode
+bin
+libft.a
+libft/bin
+rush_02
