@@ -5,6 +5,9 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "../libft/libft.h"
 
@@ -17,6 +20,7 @@ typedef struct	s_board
 	int	win_len;
 	int	total_time;
 	int	time_gain;
+	int	**content;
 }				t_board;
 
 typedef struct	s_player
@@ -26,5 +30,10 @@ typedef struct	s_player
 }				t_player;
 
 /* ==================== PROTOTYPES ==================== */
+
 void	init_params(t_board *board_config, t_player *player_config);
+void	get_param(int *dest);
+
+void	init_board(t_board *board);
+void	print_board(t_board *board);
 #endif

@@ -6,7 +6,7 @@
 #    By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/11/06 16:12:56 by pdal-mol         ###   ########.fr        #
+#    Updated: 2021/11/06 17:40:34 by pdal-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,14 @@ NAME			= rush_02
 
 FILES_GENERAL = main.c
 
-INPUT_PARSING = init_params.c
+GENERATE_BOARD = init_board.c\
+				 print_board.c
+
+INPUT_PARSING =	init_params.c\
+				get_param.c
 
 FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\
+					$(addprefix generate_board/, $(GENERATE_BOARD))\
 					main.c
 
 INC_FILES		= rush_02.h
