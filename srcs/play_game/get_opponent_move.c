@@ -1,11 +1,9 @@
-
 #include "rush_02.h"
 
-void	get_param(int *dest)
+int	get_opponent_move()
 {
 	char	*data;
 
 	get_next_line(0, &data);
-	*dest = ft_atoi(data);
-	free(data);
+	return (ft_atoi(data));
 }

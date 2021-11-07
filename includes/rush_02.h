@@ -27,6 +27,7 @@ typedef struct	s_player
 {
 	int	starting_position;
 	int	time;
+	int	can_play;
 }				t_player;
 
 /* ==================== PROTOTYPES ==================== */
@@ -34,6 +35,11 @@ typedef struct	s_player
 void	init_params(t_board *board_config, t_player *player_config);
 void	get_param(int *dest);
 
-void	init_board(t_board *board);
+void	init_board(t_board *board, t_list *gc);
 void	print_board(t_board *board);
+
+int		get_first_player(t_player *player1);
+int		get_opponent_move();
+void	run_game(t_board *board, t_player *player1);
+
 #endif

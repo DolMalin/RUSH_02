@@ -6,7 +6,7 @@
 #    By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/11/06 17:40:34 by pdal-mol         ###   ########.fr        #
+#    Updated: 2021/11/07 09:47:43 by pdal-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ GENERATE_BOARD = init_board.c\
 INPUT_PARSING =	init_params.c\
 				get_param.c
 
+PLAY_GAME =		get_first_player.c\
+				run_game.c
+
 FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\
 					$(addprefix generate_board/, $(GENERATE_BOARD))\
+					$(addprefix play_game/, $(PLAY_GAME))\
 					main.c
 
 INC_FILES		= rush_02.h
