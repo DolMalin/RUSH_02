@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "rush_02.h"
 
-
-
 int main() {
 	t_list		*gc = NULL;
 	t_board		*board = malloc_gc(&gc, sizeof(t_board));
@@ -11,8 +9,9 @@ int main() {
 
 	init_params(board, player, opponent);
 	init_board(board, gc);
-	run_game(board, player, opponent);
-	print_board(board);
+//	run_game(board, player, opponent);
+//	print_board(board);
+	minimax(board, player, gc);
 	ft_lstclear(&gc, free);
 }
 
