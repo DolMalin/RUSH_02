@@ -23,7 +23,11 @@ typedef struct	s_board
 	int	**content;
 }				t_board;
 
-
+typedef struct s_info_minimax
+{
+	int score;
+	int col;
+}				t_info_minimax;
 typedef struct	s_pos
 {
 	int	row;

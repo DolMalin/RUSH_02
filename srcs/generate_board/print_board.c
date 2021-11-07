@@ -5,22 +5,19 @@ void	print_board(t_board *board)
 {
 	int		i;
 	int		j;
-	char	buff;
-	int		fd;
 
-	fd = open("board.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
-	i = 0;
-	while (i < board->height)
+	i = board->height -1;
+	while (i != 0)
 	{
-		j = 0;
-		while (j < board->width)
+		j = board->width -1;
+		while (j != 0)
 		{
-			buff = board->content[i][j] + '0';
-			write(fd, &buff, 1);
-			j++;
+			dprintf(1, "%d", board->content[i][j]);
+			j--;
 		}
-		write(fd, "\n", 1);
-		i++;
+		dprintf(1, "\n");
+		i--;
 	}
-	close(fd);
+	dprintf(1, "\n");
+
 }
