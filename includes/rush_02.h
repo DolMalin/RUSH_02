@@ -38,7 +38,7 @@ void	get_param(int *dest);
 void	init_board(t_board *board, t_list *gc);
 void	print_board(t_board *board);
 
-int		get_first_player(t_player *player, t_player *opponent);
+void	get_first_player(t_player *player, t_player *opponent);
 int		get_opponent_move(void);
 void	opponent_move(t_board *board, t_player *player,  t_player *opponent);
 void	put_move_on_board(int move, int player_token, t_board *board);

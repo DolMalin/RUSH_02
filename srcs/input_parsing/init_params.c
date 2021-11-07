@@ -12,4 +12,6 @@ void	init_params(t_board *board, t_player *player, t_player *opponent)
 		opponent->starting_position = 2;
 	else
 		opponent->starting_position = 1;
+	opponent->time = board->total_time;
+	player->time = board->total_time;
 }

@@ -14,3 +14,5 @@ int main() {
 	run_game(board, player, opponent);
 	ft_lstclear(&gc, free);
 }
+
+
