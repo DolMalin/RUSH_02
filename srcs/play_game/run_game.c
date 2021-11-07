@@ -7,11 +7,11 @@ _Noreturn void	run_game(t_board *board, t_player *player, t_player *opponent, t_
 	{
 		if (opponent->can_play) {
 			opponent_move(board, player, opponent);
-			print_board(board);
+//			print_board(board);
 		}
 		if (player->can_play) {
 			player_move(board, player, opponent, gc);
-			print_board(board);
+//			print_board(board);
 		}
 	}
 }
