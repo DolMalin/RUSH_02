@@ -149,5 +149,6 @@ char				**ft_strsdup(char **s1);
 void				ft_strs_add_to_gc(char **strs, t_list **gc);
 void				ft_lst_remove_if(t_list **lst, t_list *remove);
 char				**ft_strsjoin_begin(char **strs, char *str);
-int   				ft_error(t_list *gc);
+int					ft_error(t_list *gc);
+int					ft_error_msg(t_list *gc, char *msg);
 #endif

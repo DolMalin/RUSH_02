@@ -27,8 +27,11 @@ PLAY_GAME =		get_first_player.c\
 				put_move_on_board.c\
 				run_game.c
 
+MINIMAX			= minimax.c calculator_score.c
+
 FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\
 					$(addprefix generate_board/, $(GENERATE_BOARD))\
+					$(addprefix minimax/, $(MINIMAX))\
 					$(addprefix play_game/, $(PLAY_GAME))\
 					main.c
 

@@ -23,6 +23,12 @@ typedef struct	s_board
 	int	**content;
 }				t_board;
 
+
+typedef struct	s_pos
+{
+	int	row;
+	int	col;
+}				t_pos;
 typedef struct	s_player
 {
 	int	starting_position;
@@ -44,4 +50,10 @@ void	opponent_move(t_board *board, t_player *player,  t_player *opponent);
 void	put_move_on_board(int move, int player_token, t_board *board);
 void	run_game(t_board *board, t_player *player, t_player *opponent);
 void	player_move(t_board *board, t_player *player, t_player *opponent);
+
+int		minimax(t_board *board, t_player *player, t_list *gc);
+int 	score_horizontal(int **board_content, int board_width, int numero_player, t_pos *pos_piece);
+int 	score_vertical(int **board_content, int numero_player, t_pos *pos_piece);
+int 	score_diagonal_right(int **board_content, int board_width, int board_height, int numero_player, t_pos *pos_piece);
+int 	score_diagonal_left(int **board_content, int board_width, int board_height, int numero_player, t_pos *pos_piece);
 #endif
