@@ -1,6 +1,6 @@
 #include "rush_02.h"
 
-int score_to_position(t_board *board, t_player *player, t_pos *pos_piece){
+int score_to_position(t_board *board, int **board_content, t_player *player, t_pos *pos_piece){
 
 	int score;
 	score = score_horizontal(board->content, board->width, board->win_len, player->starting_position, pos_piece);
@@ -39,8 +39,8 @@ void	print_board_1(int **board,  int height, int width)
 	int		i;
 	int		j;
 
-	i = 0;
-	while (i != height)
+	i = height - 1;
+	while (i != -1)
 	{
 		j = 0;
 		while (j != width)
@@ -49,54 +49,59 @@ void	print_board_1(int **board,  int height, int width)
 			j++;
 		}
 		dprintf(1, "\n");
-		i++;
+		i--;
 	}
 	dprintf(1, "\n");
 
 }
-t_info_minimax minimax_recursive(t_board *board, int **board_content, t_player *player, int depth, t_list *gc) {
-//	int score;
-	t_pos *pos_piece = malloc_gc(&gc, sizeof(t_pos) * board->width);
+t_info_minimax minimax_recursive(t_board *board, int **board_content, int maximizing_player, int depth, t_list *gc, int column) {
+	t_info_minimax new_info;
+	t_info_minimax info;
 
 	if (depth == 0) // NEED TO ADD END OF GAME(DRAW, WIN, LOSE)
 	{
-		t_info_minimax info;
-		info.col = 100;
-		info.score = 100;
-//		info.col = pos_piece->col;
-//		info.score = score_to_position(board, player, pos_piece);
-//		print_board_1(board_content, board->height, board->width);
+		t_pos *pos = malloc_gc(&gc, sizeof(t_pos));
+		pos->col = column;
+		pos->row = find_row_position(board_content, board->height, column);
+		info.col = column;
+		info.score = score_to_position(board, board_content, maximizing_player + 1, pos);
+		dprintf(1, "col: %d, row: %d, score: %d, player: %d\n", column, pos->row, info.score, maximizing_player + 1);
+		print_board_1(board_content, board->height, board->width);
 		return (info);
 	}
-//	if (player->starting_position) { // maximizingPlayer
-		for (pos_piece->col = 0; pos_piece->col < board->width - 1; pos_piece->col++) {
-//			score = INT_MIN;
-			pos_piece->row = find_row_position(board_content, board->height, pos_piece->col);
-			board_content[pos_piece->row][pos_piece->col] = player->starting_position;
-			dprintf(1, "Col: %d, row: %d, for player: %d, depth: %d = \n", pos_piece->col, pos_piece->row, player->starting_position, depth);
-//			print_board_1(board_content, board->height, board->width);
-			if (player->starting_position == 1)
-				player->starting_position = 2;
-			else
-				player->starting_position = 1;
-			minimax_recursive(board, board_content, player, depth-1, gc);
-//			info.score > score
-//			if (pos_piece->row != -1) {
-//				score = score_to_position(board, player, pos_piece);
-//				if (max_score < score) {
-//					max_score = score;
-//					col = pos_piece->row;
-//				}
-//			}
+	if (maximizing_player) {
+		info.col = 0;
+		info.score = INT_MIN;
+		for (int col = 0; col < board->width; col++) {
+			int **board_tmp = ft_array_int_dup(board_content, board->width, board->height, gc);
+			int row = find_row_position(board_tmp, board->height, col);
+			dprintf(1, "MAXIMIZING PLAYER : row: %d, col: %d\n", row, col);
+
+			board_tmp[row][col] = maximizing_player + 1;
+			new_info = minimax_recursive(board, board_tmp, 0, depth - 1, gc, col);
+			if (new_info.score > info.score) {
+				info.score = new_info.score;
+				info.col = new_info.col;
+			}
 		}
-//	}
-//	else { // minimizing player
-//
-//	}
-	t_info_minimax info;
-	info.col = 0;
-	info.score = 0;
-	return (info);
+		return info;
+	}
+	else { // Minimizing player
+		info.col = 0;
+		info.score = INT_MAX;
+		for (int col = 0; col < board->width; col++) {
+			int **board_tmp = ft_array_int_dup(board->content, board->width, board->height, gc);
+			int row = find_row_position(board_tmp, board->height, col);
+			board_tmp[row][col] = maximizing_player + 1;
+			dprintf(1, "MINIMIZING PLAYER : row: %d, col: %d\n", row, col);
+			new_info = minimax_recursive(board, board_tmp, 1, depth - 1, gc, col);
+			if (new_info.score < info.score) {
+				info.score = new_info.score;
+				info.col = new_info.col;
+			}
+		}
+		return info;
+	}
 }
 
 int minimax(t_board *board, t_player *player, t_list *gc){
@@ -116,6 +121,7 @@ int minimax(t_board *board, t_player *player, t_list *gc){
 	board->content[4] = line5;
 	board->content[5] = line6;
 	board->content[6] = line7;
+<<<<<<< HEAD
 
 
 
@@ -132,4 +138,15 @@ int minimax(t_board *board, t_player *player, t_list *gc){
 
 	return (1);
 //	return (info.col);
+=======
+	(void)player;
+	(void)gc;
+//	t_pos *pos_piece = malloc_gc(&gc, sizeof(t_pos) * board->width);
+//	dprintf(1, "%d\n", score_to_position(board,player, pos_piece));
+//	if(player->starting_position == )
+	t_info_minimax  info = minimax_recursive(board,board->content, player->starting_position - 1, 2, gc, 0);
+	dprintf(1, "score: %d, col: %d\n", info.score, info.col);
+//	return (pos_piece->col);
+	return (info.col);
+>>>>>>> f4a721f95e261902c39f8230b09b3dc4234d6d9a
 }
