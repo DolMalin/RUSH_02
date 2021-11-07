@@ -6,7 +6,7 @@
 #    By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/11/07 09:47:43 by pdal-mol         ###   ########.fr        #
+#    Updated: 2021/11/07 11:40:16 by pdal-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,10 @@ INPUT_PARSING =	init_params.c\
 				get_param.c
 
 PLAY_GAME =		get_first_player.c\
+				get_opponent_move.c\
+				opponent_move.c\
+				player_move.c\
+				put_move_on_board.c\
 				run_game.c
 
 FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\

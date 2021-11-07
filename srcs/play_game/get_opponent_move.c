@@ -1,6 +1,6 @@
 #include "rush_02.h"
 
-int	get_opponent_move()
+int	get_opponent_move(void)
 {
 	char	*data;
 
