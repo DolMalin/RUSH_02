@@ -56,6 +56,9 @@ FLAGS			= -fsanitize=address -g3 -Wall -Wextra  -Werror
 
 all: 			${NAME}
 
+
+run:			${NAME}
+				./${NAME}
 init:
 				@$(shell mkdir -p $(BIN_PATH))
 				@make -C ${LIBFT_PATH}

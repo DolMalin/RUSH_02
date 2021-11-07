@@ -3,7 +3,6 @@
 
 // JE DOIS PRENDRE EN COMPTE LE FAIT QUE CE N'EST PAS QUE UN PUISSANCE 4
 int calculate_score_with_line_of_piece(int count_line_of_piece, int	win_len) {
-	printf("\nline of piece : %d\n", count_line_of_piece);
 	if (win_len == 3)
 	{
 		if (count_line_of_piece == 2)

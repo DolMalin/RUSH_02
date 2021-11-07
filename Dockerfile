@@ -10,7 +10,7 @@ FROM debian:10 as builder
 # or update some packages. (`apt` is the package manager
 # of Debian)
 #
-RUN apt update && apt install -y gcc
+RUN apt update && apt install -y clang make
 
 ## Mandatory copy and workdir
 #
@@ -23,4 +23,4 @@ COPY . .
 # The bots are built here.
 # Add your own if you need it.
 #
-RUN make
+RUN make run
