@@ -52,13 +52,16 @@ void	get_first_player(t_player *player, t_player *opponent);
 int		get_opponent_move(void);
 void	opponent_move(t_board *board, t_player *player,  t_player *opponent);
 void	put_move_on_board(int move, int player_token, t_board *board);
-void	run_game(t_board *board, t_player *player, t_player *opponent);
-void	player_move(t_board *board, t_player *player, t_player *opponent);
-
+_Noreturn void	run_game(t_board *board, t_player *player, t_player *opponent, t_list *gc);
+void run_game_test(t_board *board, t_player *player, t_player *opponent, t_list *gc);
+void	player_move(t_board *board, t_player *player, t_player *opponent, t_list *gc);
+int score_to_position(t_board *board, int **board_copy, t_player *player, t_pos *pos_piece);
+t_info_minimax score_to_all_position(t_board *board, t_player *player, int **board_copy);
 int		minimax(t_board *board, t_player *player, t_list *gc);
-int 	score_horizontal(int **board_content, int board_width, int win_len, int numero_player, t_pos *pos_piece);
+int 	score_horizontal(t_board *board, int **board_content, int numero_player, t_pos *pos_piece);
 int 	score_vertical(int **board_content, int win_len, int numero_player, t_pos *pos_piece);
-int 	score_diagonal_right(int **board_content, int board_width, int board_height, int win_len, int numero_player, t_pos *pos_piece);
+int		score_diagonal_right(t_board *board, int **board_content, int board_width, int board_height, int win_len, int numero_player, t_pos *pos_piece);
 int 	score_diagonal_left(int **board_content, int board_width, int board_height, int win_len, int numero_player, t_pos *pos_piece);
 int		score_middle(int board_width, t_pos *pos_piece);
+int find_row_position(int **board_copy, int board_height, int col);
 #endif

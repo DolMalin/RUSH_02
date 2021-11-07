@@ -1,14 +1,12 @@
 #include "rush_02.h"
 
-void	player_move(t_board *board, t_player *player, t_player *opponent)
+void	player_move(t_board *board, t_player *player, t_player *opponent, t_list *gc)
 {
-	char	*data;
-	int		move;
-
-	get_next_line(0, &data);
-	move = ft_atoi(data);
-	put_move_on_board(move, player->starting_position, board);
+	int col = minimax(board, player, gc);
+	printf("%d\n", col);
+	fflush(stdout);
+	if (find_row_position(board->content, board->height, col) != -1)
+		board->content[find_row_position(board->content, board->height, col)][col] = player->starting_position;
 	player->can_play = 0;
 	opponent->can_play = 1;
-	print_board(board);
 }

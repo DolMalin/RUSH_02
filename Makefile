@@ -52,13 +52,14 @@ LIBFT			= $(addprefix ${LIBFT_PATH}, ${NAME_LIBFT})
 
 CC				= clang
 RM				= rm -rf
-FLAGS			= -fsanitize=address -g3 -Wall -Wextra  -Werror
+FLAGS			= #-Wall -Wextra  -Werror -g3 -fsanitize=address
+FLAGS_PROD		= -o3
 
 all: 			${NAME}
 
 
-run:			${NAME}
-				./${NAME}
+run:			fclean ${NAME}
+
 init:
 				@$(shell mkdir -p $(BIN_PATH))
 				@make -C ${LIBFT_PATH}

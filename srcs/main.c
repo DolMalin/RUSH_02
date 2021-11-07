@@ -9,11 +9,8 @@ int main() {
 
 	init_params(board, player, opponent);
 	init_board(board, gc);
-	minimax(board, player, gc);
-	//run_game(board, player, opponent);
-//	run_game(board, player, opponent);
-//	print_board(board);
-	minimax(board, player, gc);
+	run_game(board, player, opponent, gc);
+	run_game_test(board, player, opponent, gc);
 	ft_lstclear(&gc, free);
 }
 
