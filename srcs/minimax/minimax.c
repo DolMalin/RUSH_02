@@ -3,10 +3,11 @@
 int score_to_position(t_board *board, t_player *player, t_pos *pos_piece){
 
 	int score;
-	score = score_horizontal(board->content, board->width, player->starting_position, pos_piece);
-	score += score_vertical(board->content, player->starting_position, pos_piece);
-	score += score_diagonal_left(board->content, board->width, board->height, player->starting_position, pos_piece);
-	score += score_diagonal_right(board->content, board->width, board->height, player->starting_position, pos_piece);
+	score = score_horizontal(board->content, board->width, board->win_len, player->starting_position, pos_piece);
+	score += score_vertical(board->content, board->win_len, player->starting_position, pos_piece);
+	score += score_diagonal_left(board->content, board->width, board->height, board->win_len, player->starting_position, pos_piece);
+	score += score_diagonal_right(board->content, board->width, board->height, board->win_len, player->starting_position, pos_piece);
+	score += score_middle(board->width, pos_piece);
 	return (score);
 }
 
@@ -104,9 +105,9 @@ int minimax(t_board *board, t_player *player, t_list *gc){
 	int line6[] = {0, 0, 0, 0, 0, 0, 0};
 	int line5[] = {0, 0, 0, 0, 0, 0, 0};
 	int line4[] = {0, 0, 0, 0, 0, 0, 0};
-	int line3[] = {0, 0, 0, 0, 0, 0, 0};
-	int line2[] = {0, 0, 0, 0, 0, 0, 0};
-	int line1[] = {0, 0, 0, 0, 0, 0, 0};
+	int line3[] = {1, 0, 0, 0, 0, 0, 0};
+	int line2[] = {2, 0, 0, 0, 0, 0, 0};
+	int line1[] = {2, 2, 0, 0, 0, 0, 0};
 
 	board->content[0] = line1;
 	board->content[1] = line2;
@@ -116,8 +117,19 @@ int minimax(t_board *board, t_player *player, t_list *gc){
 	board->content[5] = line6;
 	board->content[6] = line7;
 
-	int **board_tmp = ft_array_int_dup(board->content, board->width, board->height, gc);
-	t_info_minimax  info = minimax_recursive(board,board_tmp, player, 2, gc);
 
-	return (info.col);
+
+	//int **board_tmp = ft_array_int_dup(board->content, board->width, board->height, gc);
+	//t_info_minimax  info = minimax_recursive(board,board_tmp, player, 2, gc);
+
+	// TEST TO REMOVE 
+	dprintf(1, "\n");
+	print_board(board);
+	t_pos *posix = malloc_gc(&gc, sizeof(t_pos));
+	posix->row = 0;
+	posix->col = 2;
+	dprintf(1, "\n\nscore : %d\n", score_to_position(board, player, posix));
+
+	return (1);
+//	return (info.col);
 }

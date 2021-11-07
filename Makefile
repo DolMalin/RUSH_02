@@ -6,7 +6,7 @@
 #    By: pdal-mol <dolmalinn@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/23 14:11:52 by alafranc          #+#    #+#              #
-#    Updated: 2021/11/07 11:40:16 by pdal-mol         ###   ########.fr        #
+#    Updated: 2021/11/07 14:12:24 by pdal-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ PLAY_GAME =		get_first_player.c\
 				put_move_on_board.c\
 				run_game.c
 
-MINIMAX			= minimax.c calculator_score.c
+MINIMAX			= minimax.c\
+				calculator_score.c
 
 FILES			= 	$(addprefix input_parsing/, ${INPUT_PARSING})\
 					$(addprefix generate_board/, $(GENERATE_BOARD))\

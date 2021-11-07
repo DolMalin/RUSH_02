@@ -56,8 +56,9 @@ void	run_game(t_board *board, t_player *player, t_player *opponent);
 void	player_move(t_board *board, t_player *player, t_player *opponent);
 
 int		minimax(t_board *board, t_player *player, t_list *gc);
-int 	score_horizontal(int **board_content, int board_width, int numero_player, t_pos *pos_piece);
-int 	score_vertical(int **board_content, int numero_player, t_pos *pos_piece);
-int 	score_diagonal_right(int **board_content, int board_width, int board_height, int numero_player, t_pos *pos_piece);
-int 	score_diagonal_left(int **board_content, int board_width, int board_height, int numero_player, t_pos *pos_piece);
+int 	score_horizontal(int **board_content, int board_width, int win_len, int numero_player, t_pos *pos_piece);
+int 	score_vertical(int **board_content, int win_len, int numero_player, t_pos *pos_piece);
+int 	score_diagonal_right(int **board_content, int board_width, int board_height, int win_len, int numero_player, t_pos *pos_piece);
+int 	score_diagonal_left(int **board_content, int board_width, int board_height, int win_len, int numero_player, t_pos *pos_piece);
+int		score_middle(int board_width, t_pos *pos_piece);
 #endif

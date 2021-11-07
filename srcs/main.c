@@ -11,8 +11,8 @@ int main() {
 
 	init_params(board, player, opponent);
 	init_board(board, gc);
-	run_game(board, player, opponent);
-	print_board(board);
+	minimax(board, player, gc);
+	//run_game(board, player, opponent);
 	ft_lstclear(&gc, free);
 }
 
