@@ -10,7 +10,7 @@ int main() {
 	init_params(board, player, opponent);
 	init_board(board, gc);
 	run_game(board, player, opponent, gc);
-	run_game_test(board, player, opponent, gc);
+	//run_game_test(board, player, opponent, gc);
 	ft_lstclear(&gc, free);
 }
 
